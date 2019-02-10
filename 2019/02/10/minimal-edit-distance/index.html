@@ -259,7 +259,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">736</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">993</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -388,9 +388,10 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="什么是动态规划"><a href="#什么是动态规划" class="headerlink" title="什么是动态规划"></a>什么是动态规划</h2><h2 id="最短编辑距离"><a href="#最短编辑距离" class="headerlink" title="最短编辑距离"></a>最短编辑距离</h2><p>编辑距离是指将一个字符串转化到另外一个字符串所需要的插入、替换、删除操作的次数。<br>但是为什么要用动态规划这样一个算法来计算最短编辑距离呢？<br>试想一下，如果我们简单地使用递归或者是迭代的方法计算最短编辑距离，(计算的复杂度，数量级)</p>
+        <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="什么是动态规划"><a href="#什么是动态规划" class="headerlink" title="什么是动态规划"></a>什么是动态规划</h2><p>动态规划与递归相似的是，它们都是通过将问题划分成更小的子问题，直到子问题足够小以至于我们可以直接计算出答案，再一步步往上回溯直到得到原本的问题的答案。<br>与递归需要检查所有的情况不同，为了完成我们的目标有时候也许我们只需要<strong>局部的最优解</strong>。而动态规划就是通过计算局部最优解并舍弃其他的局部解最后计算得到整个问题的最优解。<br>在动态规划中我们将规模不同的具有最优子结构的子问题称作<strong>状态</strong>，而描述从某一个状态到另外一个状态的表达式被我们称作<strong>状态转移方程</strong>。</p>
+<h2 id="最短编辑距离"><a href="#最短编辑距离" class="headerlink" title="最短编辑距离"></a>最短编辑距离</h2><p>编辑距离是指将一个字符串转化到另外一个字符串所需要的插入、替换、删除操作的最少次数。<br>但是为什么要用动态规划这样一个算法来计算最短编辑距离呢？<br>试想一下，如果我们简单地使用递归或者是迭代的方法计算最短编辑距离，由于递归需要遍历所有的可能性，所以递归通常需要大量的时间进行计算，而在实际生产中，用户可能会因为过长的等待时间而流失。</p>
 <p>动态规划的优点在于它只保存了局部最优解而并不是所有的解，所以在内存资源的消耗上以及计算复杂度上具有较大优势。<br>判断一个问题能否用动态规划算法解决在于，这个问题是否具有最优子结构。</p>
-<p>对于最短编辑距离问题，考虑这样两个字符串：str1a 和 str2b<br>这里我们用<code>d[i][j]</code>来代表将一个长度为i的字符串转化为一个长度为j的字符串的最短编辑距离。<br>假设字符串str1a的长度为<code>i</code>，字符串str2b的长度为<code>j</code>。</p>
+<p>对于最短编辑距离问题，考虑这样两个字符串：<code>str1a</code> 和 <code>str2b</code>。<br>这里我们用<code>d[i][j]</code>来代表将一个长度为i的字符串转化为一个长度为j的字符串的最短编辑距离。<br>假设字符串str1a的长度为<code>i</code>，字符串str2b的长度为<code>j</code>。</p>
 <p>根据之前所提到的编辑字符串的操作共有：替换、插入、删除 三种。<br>对于这三种不同的情况对应的最短编辑距离计算过程如下所示：<br>首先我们要明确当前的目标是什么？——计算字符串<code>str1a（长度为i）</code>转换到字符串<code>str2b（长度为j）</code>的最短编辑距离。</p>
 <ul>
 <li>替换的情况：<code>str1a</code>中的<code>str1</code>被转换成<code>str2</code>之后，再将<code>(str1 -&gt; str2)a</code>中的<code>a</code>替换为<code>b</code>。此时的编辑距离为<code>d[i -1][j - 1] + 1(a != b) / 0(a == b)</code>。</li>
@@ -585,20 +586,6 @@ top:50vh;
     
     
     
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2019/02/10/minimal-edit-distance/" >minimal edit distance</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
@@ -615,6 +602,11 @@ top:50vh;
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2019/02/10/minimal-edit-distance/" >minimal edit distance</a>
+        </li>
     
     
         <li class="archive-post-item">

@@ -357,9 +357,8 @@ height:50vh;
                 <span>minimal edit distance</span>
         </a>
         <div class="abstract-content">
-            动态规划什么是动态规划最短编辑距离编辑距离是指将一个字符串转化到另外一个字符串所需要的插入、替换、删除操作的次数。但是为什么要用动态规划这样一个算法来计算最短编辑距离呢？试想一下，如果我们简单地使用递归或者是迭代的方法计算最短编辑距离，(计算的复杂度，数量级)
-动态规划的优点在于它只保存了局部最优解而并不是所有的解，所以在内存资源的消耗上以及计算复杂度上具有较大优势。判断一个问题能否用动态规划算法解决在于，这个问题是否具有最优子结构。
-对于最短编辑距离问题，考虑这样两个字符串：str1a 和 str2b这里我们用d[i][j]来代表将一个长度为i的字符串转化为一个长度为j的字符串的最短编...
+            动态规划什么是动态规划动态规划与递归相似的是，它们都是通过将问题划分成更小的子问题，直到子问题足够小以至于我们可以直接计算出答案，再一步步往上回溯直到得到原本的问题的答案。与递归需要检查所有的情况不同，为了完成我们的目标有时候也许我们只需要局部的最优解。而动态规划就是通过计算局部最优解并舍弃其他的局部解最后计算得到整个问题的最优解。在动态规划中我们将规模不同的具有最优子结构的子问题称作状态，而描述从某一个状态到另外一个状态的表达式被我们称作状态转移方程。
+最短编辑距离编辑距离是指将一个字符串转化到另外一个字符串所需要的插入、替换、删除操作的最少次数。但是为什么要用动态规划这样一个算法来计...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -647,20 +646,6 @@ More...
     
     
     
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2019/02/10/minimal-edit-distance/" >minimal edit distance</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
@@ -677,6 +662,11 @@ More...
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2019/02/10/minimal-edit-distance/" >minimal edit distance</a>
+        </li>
     
     
         <li class="archive-post-item">
