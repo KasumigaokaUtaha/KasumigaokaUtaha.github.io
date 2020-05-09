@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>interpretation_of_conditional_probablity · saenai no heroine</title>
+    <title>读书笔记 - 自制编译器 · saenai no heroine</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >saenai no heroine</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">interpretation_of_conditional_probablity</a>
+                <a href="#" class="post-name">读书笔记 - 自制编译器</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            interpretation_of_conditional_probablity
+            读书笔记 - 自制编译器
             <!-- 404 -->
             
         </h1>
@@ -264,14 +264,20 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "读书笔记">读书笔记</a>
+    
+</div>
+                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">164</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1,181</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/01/09</span>
+                    <span class="post-intro-time">2020/05/09</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -395,8 +401,31 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Conditional-Probablity-Interpretation"><a href="#Conditional-Probablity-Interpretation" class="headerlink" title="Conditional Probablity Interpretation"></a>Conditional Probablity Interpretation</h2><p>How to interprete the conditional probablity? The most simple way to understand is to use the venn diagram.<br>However, as it is not difficult to understand and compute it, the ability to correctly figure out the conditional probability in a given scenario is some times difficult at least for myself.<br>Let’s consider the following question:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Nach einer Zeitungsmeldung hat ein US-amerikanischer Arzt 90 Frauen aus einer &quot;Hochrisikogruppe&quot; </span><br><span class="line">vorsorglich die Brust amputiert, da 93% der Brustkrebsfaelle aus der Hochrisikogruppe stammen. </span><br><span class="line">Hierbei ist er offensichtlich davon ausgegangen, </span><br><span class="line">dass mit der Zugehoerighkeit zur Hochriskogruppe eine aehnlich hohe Wahrscheinlichkeit besteht, </span><br><span class="line">dass der Brustkrebs ausbricht.</span><br></pre></td></tr></table></figure></p>
-<p>The important sentence in the problem is “93% der Brustkrebsfaelle aus der Hochrisikogruppe stammen”, and it should be interpretated as $ \frac{P(Bk|Hr)}{P(Bk)} = 93\% $, because it is said that 93% of <strong>all breast cancer cases</strong> come from people in high risk group and this is more vivid in a venn diagram.<br><img src="https://s2.ax1x.com/2020/01/10/lf6muR.png" alt="Venn Diagram"></p>
+        <h1 id="第1部分"><a href="#第1部分" class="headerlink" title="第1部分"></a>第1部分</h1><h2 id="第三章-语法分析的概要"><a href="#第三章-语法分析的概要" class="headerlink" title="第三章 语法分析的概要"></a>第三章 语法分析的概要</h2><h3 id="3-3-JavaCC-的概要"><a href="#3-3-JavaCC-的概要" class="headerlink" title="3.3 JavaCC 的概要"></a>3.3 JavaCC 的概要</h3><h4 id="语法描述文件的例子"><a href="#语法描述文件的例子" class="headerlink" title="语法描述文件的例子"></a>语法描述文件的例子</h4><p>代码清单 3.1 Adder.jj<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">	STATIC = false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">PARSER_BEGIN(Adder)</span><br><span class="line">...</span><br><span class="line">PARSER_END(Adder)</span><br><span class="line">SKIP: &#123; &lt;[&quot; &quot;,&quot;\t&quot;,&quot;\r&quot;,&quot;\n&quot;]&gt; &#125;</span><br><span class="line">TOKEN: &#123;</span><br><span class="line">	&lt;INTEGER: ([&quot;0&quot;-&quot;9&quot;])+&gt;</span><br><span class="line">&#125;</span><br><span class="line">long expr():</span><br><span class="line">&#123;</span><br><span class="line">	Token x, y;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	x=&lt;INTEGER&gt; &quot;+&quot; y=&lt;INTEGER&gt; &lt;EOF&gt;</span><br><span class="line">		&#123;</span><br><span class="line">			return Long.parseLong(x.image) + Long.parseLong(y.image);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>之后的 <code>SKIP</code> 和 <code>TOKEN</code> 部分定义了扫描器。<code>SKIP</code> 表示要跳过空格、制表符（tab）和换行 符。<code>TOKEN</code> 表示扫描整数字符并生成 <code>token</code>。<br>从 <code>long expr...</code> 开始到最后的部分定义了狭义的解析器。这部分解析 <code>token</code> 序列并执行 某些操作。<code>cbc</code> 生成抽象语法树， 但 <code>Adder</code> 类并不生成抽象语法树， 而是直接计算表达式的 结果。  </p>
+</blockquote>
+<p>读到这里的时候突然想到一个问题，<code>SKIP</code> 和 <code>TOKEN</code> 部分定义的扫描器中并没有关于 <code>&quot;+&quot;</code> 的定义，而这个符号出现在定义解析器的规则中，那么使用这样定义扫描器加解析器的组合是否能够正确分析 <code>1+2</code> 这样的输入呢？<br>按照一般的想法来说，<code>&quot;+&quot;</code> 并没有在扫描器的定义中出现，那么根据上述定义生成的扫描器理应无法识别输入中出现的 <code>&quot;+&quot;</code> 符号，但是在实际的测试中却能够成功的识别，所以猜测在解析器定义的规则中出现的 <code>&quot;+&quot;</code> 实际上在生成扫描器时也会被当作作为 <code>TOKEN</code> 定义的一部分，所以最后生成的扫描器能够正确识别输入中的 <code>&quot;+&quot;</code> 符号， <code>[&quot;0&quot;-&quot;9&quot;]</code> 以及 <code>[&quot; &quot;,&quot;\t&quot;,&quot;\r&quot;,&quot;\n&quot;]</code> 。</p>
+<p>相关的定义在 JavaCC 的文档中有提到：</p>
+<blockquote>
+<p><a href="https://javacc.github.io/javacc/documentation/grammar.html#production" target="_blank" rel="noopener">JavaCC - Grammar - Production</a><br><a href="https://javacc.github.io/javacc/documentation/grammar.html#regular-expr-production" target="_blank" rel="noopener">JavaCC - regular_expr_production</a><br><a href="https://javacc.github.io/javacc/documentation/grammar.html#regexpr_spec" target="_blank" rel="noopener">JavaCC - regexpr_spec</a><br><a href="https://javacc.github.io/javacc/documentation/grammar.html#regular-expression" target="_blank" rel="noopener">JavaCC - regular_expression</a><br><a href="https://javacc.github.io/javacc/documentation/grammar.html#expansion_unit" target="_blank" rel="noopener">JavaCC - expansion_unit</a>  </p>
+</blockquote>
+<h4 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h4><h5 id="Production"><a href="#Production" class="headerlink" title="Production"></a>Production</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">production ::= javacode_production</span><br><span class="line">             | regular_expr_production</span><br><span class="line">             | bnf_production</span><br><span class="line">             | token_manager_decls</span><br></pre></td></tr></table></figure>
+<p>There are four kinds of productions in JavaCC.</p>
+<pre><code>-  [javacode_production](https://javacc.github.io/javacc/documentation/grammar.html#javacode-production)  and  [bnf_production](https://javacc.github.io/javacc/documentation/grammar.html#bnf-production)  are used to define the grammar from which the parser is generated.
+-  [regular_expr_production](https://javacc.github.io/javacc/documentation/grammar.html#regular-expr-production)  is used to **define** the **grammar** **tokens** - the token manager is generated from this information (as well as from **inline token specifications in the parser grammar**).
+-  [token_manager_decls](https://javacc.github.io/javacc/documentation/grammar.html#token-manager-decls)  is used to introduce declarations that get inserted into the generated token manager.
+</code></pre><h5 id="regular-expression"><a href="#regular-expression" class="headerlink" title="regular-expression"></a>regular-expression</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">regular_expression ::= java_string_literal</span><br><span class="line">                     | &quot;&lt;&quot; [ [ &quot;#&quot; ] java_identifier &quot;:&quot; ] complex_regular_expression_choices &quot;&gt;&quot;</span><br><span class="line">                     | &quot;&lt;&quot; java_identifier &quot;&gt;&quot;</span><br><span class="line">                     | &quot;&lt;&quot; &quot;EOF&quot; &quot;&gt;&quot;</span><br></pre></td></tr></table></figure>
+<p>There are two places in a grammar files where regular expressions may be written:</p>
+<pre><code>1. Within a  [regular expression specification](https://javacc.github.io/javacc/documentation/grammar.html#regexpr_spec)  (part of a  [regular expression production](https://javacc.github.io/javacc/documentation/grammar.html#regular-expr-production) ),
+2. As an  [expansion unit](https://javacc.github.io/javacc/documentation/grammar.html#expansion-unit)  with an  [expansion](https://javacc.github.io/javacc/documentation/grammar.html#expansion) . When a regular expression is used in this manner, it is as if the regular expression were defined in the following manner at this location and then referred to by its label from the expansion unit:
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;DEFAULT&gt; TOKEN :</span><br><span class="line">&#123;</span><br><span class="line">  regular expression</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>That is, this usage of regular expression can be rewritten using the other kind of usage. The complete details of regular expression matching by the token manager is available in the token manager  <a href="https://javacc.github.io/javacc/tutorials/token-manager.html" target="_blank" rel="noopener">tutorial</a> . The description of the syntactic constructs follows.</p>
+<h5 id="expansion-unit"><a href="#expansion-unit" class="headerlink" title="expansion_unit"></a>expansion_unit</h5><p>…<br>An expansion unit can be a  <a href="https://javacc.github.io/javacc/documentation/grammar.html#regular-expression" target="_blank" rel="noopener">regular expression</a> . Then a legal parse of the expansion unit is any token that matches this regular expression. When a regular expression is matched, it creates an object of type Token. This object can be accessed by assigning it to a variable by prefixing the regular expression with variable =. In general, you may have any valid Java assignment left-hand side to the left of the =. <em>This assignment is not performed during lookahead evaluation</em>.<br>…</p>
+<h2 id="第5章-基于-JavaCC-的解析器的描述"><a href="#第5章-基于-JavaCC-的解析器的描述" class="headerlink" title="第5章 基于 JavaCC 的解析器的描述"></a>第5章 基于 JavaCC 的解析器的描述</h2><h3 id="5-1-基于-EBNF-语法的描述"><a href="#5-1-基于-EBNF-语法的描述" class="headerlink" title="5.1 基于 EBNF 语法的描述"></a>5.1 基于 EBNF 语法的描述</h3><h4 id="终端符和非终端符"><a href="#终端符和非终端符" class="headerlink" title="终端符和非终端符"></a>终端符和非终端符</h4><blockquote>
+<p>这里请记住 1 个术语。JavaCC 中将刚才的“语句”“函数调用”“表达式”等非 token 的语法单位称为非终端符（nonterminal symbol），并将非终端符像 Java 的函数调用一样在后面加上 括号写成 stmt() 或 expr()。<br>既然有“非”终端符，自然也有终端符。终端符（terminal symbol）可以归纳为 token。使用在扫描器中定义的名称， 可以写成 <identifier> 或 <long>。 并且 JavaCC 中除了扫描器中定义的 token 以外， “ =” 、” +” 、” ==” 这样的字符串字面量也可以作为终端符来使用。  </long></identifier></p>
+</blockquote>
+<p>一开始看到这里就产生了之前的疑问，因为终端符除了包含在扫描器中定义的 <code>token</code> 外，还包括字符串字面量，那么如果这些字符串字面量没有在扫描器中的 <code>token</code> 被定义的话，那么它们是否能够被这样定义的扫描器加解析器的组合识别并生成相应的 <code>token</code> ？<br>根据我一开始的理解，扫描器只能识别在扫描器相应定义中被定义的 <code>token</code> ，但是后来查阅 JavaCC 的文档发现，<code>token</code> 除了能在扫描器的定义中被定义以外，还能在分析器的定义中定义，比如上面提到的字符串字面量。</p>
 
     </article>
     <!-- license  -->
@@ -405,17 +434,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/05/09/reading-notes-homemade-compiler/" title= "读书笔记 - 自制编译器">
-                    <div class="nextTitle">读书笔记 - 自制编译器</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/03/14/python-socket-programming/" title= "python socket programming">
-                    <div class="prevTitle">python socket programming</div>
+                <a href= "/2020/01/09/interpretation-of-conditional-probablity/" title= "interpretation_of_conditional_probablity">
+                    <div class="prevTitle">interpretation_of_conditional_probablity</div>
                 </a>
             
         </li>
@@ -432,8 +456,8 @@ height:50vh;
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
         
         var disqus_config = function () {
-        this.page.url = "https://github.com/KasumigaokaUtaha/KasumigaokaUtaha.github.io/2020/01/09/interpretation-of-conditional-probablity/";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "interpretation_of_conditional_probablity"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = "https://github.com/KasumigaokaUtaha/KasumigaokaUtaha.github.io/2020/05/09/reading-notes-homemade-compiler/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "读书笔记 - 自制编译器"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
         
         (function () { // DON'T EDIT BELOW THIS LINE
@@ -546,7 +570,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Conditional-Probablity-Interpretation"><span class="toc-number">1.</span> <span class="toc-text">Conditional Probablity Interpretation</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第1部分"><span class="toc-number">1.</span> <span class="toc-text">第1部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第三章-语法分析的概要"><span class="toc-number">1.1.</span> <span class="toc-text">第三章 语法分析的概要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-JavaCC-的概要"><span class="toc-number">1.1.1.</span> <span class="toc-text">3.3 JavaCC 的概要</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#语法描述文件的例子"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">语法描述文件的例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Grammar"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Grammar</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Production"><span class="toc-number">1.1.1.2.1.</span> <span class="toc-text">Production</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#regular-expression"><span class="toc-number">1.1.1.2.2.</span> <span class="toc-text">regular-expression</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#expansion-unit"><span class="toc-number">1.1.1.2.3.</span> <span class="toc-text">expansion_unit</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第5章-基于-JavaCC-的解析器的描述"><span class="toc-number">1.2.</span> <span class="toc-text">第5章 基于 JavaCC 的解析器的描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-基于-EBNF-语法的描述"><span class="toc-number">1.2.1.</span> <span class="toc-text">5.1 基于 EBNF 语法的描述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#终端符和非终端符"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">终端符和非终端符</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
