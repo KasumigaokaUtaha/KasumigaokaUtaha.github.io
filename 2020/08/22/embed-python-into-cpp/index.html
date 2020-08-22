@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1,596</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1,608</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -420,7 +420,7 @@ height:50vh;
 <p>拿着 <code>Fatal Python error: Py_Initialize: unable to load the file system codec</code> 这段话上网查了一下，问题大概出在系统里有多个 Python 版本，结果没找到正确的那个。<br>解决方案很简单，设置一下环境变量 <code>PYTHONHOME</code> ，将其指向正确的Python目录即可。我这里就把它设置为了 Anaconda 的 OpenAI-Gym environment 的目录（ <code>/Users/USERNAME/.pyenv/versions/anaconda3-2020.02/envs/OpenAI-Gym</code> ）。然后，终于输出了正确的结果啦！</p>
 <p>碎碎念，这一下就折腾了三个多小时，最后半个小时是在敲这个事件记录。</p>
 <blockquote>
-<p>References:<br><a href="https://docs.python.org/3/extending/embedding.html#compiling-and-linking-under-unix-like-systems" target="_blank" rel="noopener">1. Embedding Python in Another Application — Python 3.8.5 documentation</a></p>
+<p>References:<br><a href="https://docs.python.org/3/extending/embedding.html#compiling-and-linking-under-unix-like-systems" target="_blank" rel="noopener">1. Embedding Python in Another Application — Python 3.8.5 documentation</a><br><a href="https://stackoverflow.com/questions/5694706/py-initialize-fails-unable-to-load-the-file-system-codec" target="_blank" rel="noopener">c++ - Py_Initialize fails - unable to load the file system codec - Stack Overflow</a></p>
 </blockquote>
 
     </article>
@@ -663,6 +663,12 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 8
@@ -675,20 +681,6 @@ top:50vh;
     
     
     
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/08/26/hello-world/" >Hello World</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
@@ -726,6 +718,29 @@ top:50vh;
         <li class="archive-post-item">
             <span class="archive-post-date">02/10</span><a class="archive-post-title" href= "/2019/02/10/minimal-edit-distance/" >最短编辑距离 minimal edit distance</a>
         </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/08/26/hello-world/" >Hello World</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
     
     
         <li class="archive-post-item">
