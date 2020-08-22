@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>python socket programming · saenai no heroine</title>
+    <title>尝试在C++项目中嵌入Python脚本 · saenai no heroine</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >saenai no heroine</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">python socket programming</a>
+                <a href="#" class="post-name">尝试在C++项目中嵌入Python脚本</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            python socket programming
+            尝试在C++项目中嵌入Python脚本
             <!-- 404 -->
             
         </h1>
@@ -264,14 +264,20 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "C++">C++</a>
+    
+</div>
+                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">493</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1,596</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/03/14</span>
+                    <span class="post-intro-time">2020/08/22</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -395,10 +401,27 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="什么是socket"><a href="#什么是socket" class="headerlink" title="什么是socket"></a>什么是socket</h1><p>Socket，又称套接字，最常见的socket类型是<code>AF_INET</code>，代表着协议族IPv4，这种socket指的是应用程序进程与传输层协议之间的接口。</p>
-<p>根据socket的类型不同，用来标识socket的address也有所不同。对于<code>AF_INET</code>类型的socket来说，它的地址是由(hostname, port)所构成的一个tuple。hostname可以是任意的由DNS解析的名字，也可以是一个IP地址，需要注意的是，如果将hostname指定为<code>&#39;&#39;</code>，则其代表着<code>INADDR_ANY</code>，即用来绑定所有的网络接口（网卡），假如一个host安装有多个网卡，如果这个host想同时监听所有网卡上某个port的数据包，针对每一个网卡单独创建一个socket就稍显繁琐，而使用<code>&#39;&#39;</code>则很好地解决来这个问题，所有发往或离开这个host的所有网卡的某个port的数据包都会经过这一个socket。</p>
-<p>至于为什么可以用(hostname, port)的组合来识别一个socket呢？</p>
-<p>首先，hostname会被DNS解析成一个IP地址，那么它就代表着网络上的某一个特定的host，其次我们使用socket的目地是为了在不同的hosts之间传递消息，那么就涉及到消息最终是传递给目标主机的哪个应用程序进程。而port就是用来判断传递来的消息是由哪个进程所接收。正如我们刚才所提到的，socket是应用程序进程与传输层协议之间的接口，我们可以想象每一个socket都与一个特定的进程所绑定，透过绑定的socket进程可以向位于其他host上的进程发送消息或接收消息。既然socket是与一个进程所绑定，而进程又是通过port来识别的，同时我们还要区分处在不同的host上的socket，所以socket的address是由(hostname, port)组成的。</p>
+        <h1 id="尝试在C-项目中嵌入Python脚本"><a href="#尝试在C-项目中嵌入Python脚本" class="headerlink" title="尝试在C++项目中嵌入Python脚本"></a>尝试在C++项目中嵌入Python脚本</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>首先写一个在C++代码中调用Python脚本输出 Hello World 的代码吧。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"python3.6m/Python.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    Py_Initialize();</span><br><span class="line">    PyRun_SimpleString(<span class="string">"print('hello world from python')"</span>);</span><br><span class="line">    Py_Finalize();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.17</span>)</span><br><span class="line"><span class="keyword">project</span>(CppCallPython)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">11</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_directories</span>(/Users/USERNAME/.pyenv/versions/anaconda3-<span class="number">2020.02</span>/envs/OpenAI-Gym/<span class="keyword">include</span>)</span><br><span class="line"><span class="keyword">link_directories</span>(/Users/USERNAME/.pyenv/versions/anaconda3-<span class="number">2020.02</span>/envs/OpenAI-Gym/lib)</span><br><span class="line"></span><br><span class="line"><span class="comment">#include_directories(/usr/local/opt/python@3.8/Frameworks/Python.framework/Versions/3.8/include)</span></span><br><span class="line"><span class="comment">#link_directories(/usr/local/opt/python@3.8/Frameworks/Python.framework/Versions/3.8/lib)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(CppCallPython main.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(CppCallPython python3.<span class="number">6</span>m)</span><br><span class="line"><span class="comment">#target_link_libraries(CppCallPython python3.8)</span></span><br></pre></td></tr></table></figure>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>在编写这一个 Hello World 程序时，网上的教程大多数都是使用的 Python 2.7 版本或者是直接从官网下载安装的或者是通过各种包管理器安装的 Python 3.x，对于这些情况，我们很容易就能找到对应的 Python dynamic link library。对于 mac os 来说，通过 <code>brew install python</code> 安装的 Python 的话，Python 的 <code>dylib</code>  就存在于该路径下 <a href="mailto:`/usr/local/opt/python@3.8" target="_blank" rel="noopener">`/usr/local/opt/python@3.8</a>/Frameworks/Python.framework/Versions/3.8/lib` （注意替换上述路径中的版本号为使用的版本号，本文中使用的是使用 brew 安装的 3.8.3 版本的 Python）。<br>当前，我的 MBP 上一共存在有三种不同的 Python：</p>
+<pre><code>1. Mac os 系统自带的 Python 2.7，用于各种系统用途
+2. brew package manager 安装的 Python 3.8，用作一些使用 brew 安装的包的依赖
+3. 使用 pyenv 安装的 Anaconda-2020.02，以及一系列的 conda environments。
+</code></pre><p>从现在起，假设当前使用的Python是来自于 Anaconda的某一个 environment - <code>OpenAI-Gym</code> 。<br>一开始写好了C++部分之后，就开始编写相应的CMake文件了。这时候就犯了难，Python 的 include path 很好找，直接去这个 environment 下面找到 include 文件夹就好了，这个文件夹的路径就是我们需要的 include path。而 Python 的 dylib 则让我犯了难。理论上来说 library 应该是放在类似名为 lib 的文件夹下的。然后就去找了路径 <code>environment/lib</code> 下面寻找有没有 Python 的 dylib。一开始的时候不知道是不是看错了还是怎么的，以为没有（后面发现其实是有的）。之后就发现，诶，在 lib 文件夹里还存在一个叫做 <code>python3.6</code> 的文件夹。进去之后用 <code>ls | grep python</code> 搜索了一下发现没有任何结果。这就让我纳闷了。这时突然想起之前看的 Python 官方的关于将Python脚本嵌入到C++程序的文档，在那个文档的最后[1]有提到过C++编译需要设置的一些参数。其中就提到了可以使用一个 Python 自带的shell脚本 <code>pythonX.Y-config --ldflags</code> 来获取链接的参数。我执行之后得到的结果是这样的：<code>-L/Users/USERNAME/.pyenv/versions/anaconda3-2020.02/lib/python3.7/config-3.7m-darwin -lpython3.7m -ldl -framework CoreFoundation</code>。虽然也不是很懂这些参数的意思，不过我猜测应该是在这个路径（ <code>/Users/USERNAME/.pyenv/versions/anaconda3-2020.02/lib/python3.7/config-3.7m-darwin</code> ）下面就能找到 Python 的 dylib了。可惜事情并没有这么简单。这个路径下面与 library 有关的就只有一个：<code>libpython3.7m.a</code> 。通过 <code>file</code> 命令可以知道，这个文件是一个静态库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ file libpython3.7m.a</span><br><span class="line">libpython3.7m.a: current ar archive random library</span><br></pre></td></tr></table></figure>
+<p>然后我就傻乎乎地直接把这个静态库当作动态库（dylib）写进了 CMake文件里。然后 build 就输出了超长一串各种看不懂的错误。<br>。。。<br>中间也找了各种办法，但是都不管用。中途想过会不会是因为我当时使用的是 Anaconda 发行版而不是普通从官网下载或者从包管理器安装的 Python。于是就去测试了一下用 brew 安装的 Python 3.8.3。</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.17</span>)</span><br><span class="line"><span class="keyword">project</span>(CppCallPython)</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">11</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include_directories</span>(/usr/local/opt/python@<span class="number">3.8</span>/Frameworks/Python.framework/Versions/<span class="number">3.8</span>/<span class="keyword">include</span>)</span><br><span class="line"><span class="keyword">link_directories</span>(/usr/local/opt/python@<span class="number">3.8</span>/Frameworks/Python.framework/Versions/<span class="number">3.8</span>/lib)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(CppCallPython main.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(CppCallPython python3.<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
+<p>于是，直接成功啦。<br>当然到这里故事并没有结束，归根结底我还是想用 Anaconda 的。所以还是要解决一开始的问题。从这里开始我知道了一开始看到的那个 <code>libpython3.7m.a</code> 文件其实是一个静态库。那么我就想会不会是 Anaconda 版本的 Python 没有带 Python 的动态库呢。网上找了一圈没什么收获。只能自己折腾啦。<br>这时我又回到了 <code>libpython3.7m.a</code> 这个静态库所在的文件夹，执行了 <code>ls -lh</code> 命令，有了惊奇的发现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">pwd</span></span><br><span class="line">/Users/USERNAME/.pyenv/versions/anaconda3-2020.02/envs/OpenAI-Gym/lib/python3.6/config-3.6m-darwin</span><br><span class="line">$ ls -lh</span><br><span class="line">...</span><br><span class="line">lrwxr-xr-x  1 USERNAME  staff    21B Jul 23 16:30 libpython3.6m.a -&gt; ../../libpython3.6m.a</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>咦，这个静态库原来是个软链接。于是就去到了它链接的文件所在的文件夹。然后用 <code>ls | grep python</code> 搜索了一下 （其实应该用 <code>find . -name &#39;*python*&#39;</code> ）。意外收获</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">pwd</span></span><br><span class="line">/Users/USERNAME/.pyenv/versions/anaconda3-2020.02/envs/OpenAI-Gym/lib</span><br><span class="line">$ ls | grep python</span><br><span class="line">libpython3.6m.a</span><br><span class="line">libpython3.6m.dylib</span><br><span class="line">libpython3.6m.nolto.a</span><br><span class="line">python3.6</span><br></pre></td></tr></table></figure>
+<p><code>libpython3.6m.dylib</code> 不就是我一直苦苦寻找的动态链接库吗！<br>在CMake设置好了链接的目录以及链接的动态库的名字之后，尝试着build，结果又又又出问题了。输出如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Could not find platform independent libraries &lt;prefix&gt;</span><br><span class="line">Could not find platform dependent libraries &lt;exec_prefix&gt;</span><br><span class="line">Consider setting <span class="variable">$PYTHONHOME</span> to &lt;prefix&gt;[:&lt;exec_prefix&gt;]</span><br><span class="line">Fatal Python error: Py_Initialize: unable to load the file system codec</span><br><span class="line">ModuleNotFoundError: No module named <span class="string">'encodings'</span></span><br><span class="line"></span><br><span class="line">Current thread 0x000000011454bdc0 (most recent call first):</span><br><span class="line"></span><br><span class="line">Process finished with <span class="built_in">exit</span> code 6</span><br></pre></td></tr></table></figure>
+<p>拿着 <code>Fatal Python error: Py_Initialize: unable to load the file system codec</code> 这段话上网查了一下，问题大概出在系统里有多个 Python 版本，结果没找到正确的那个。<br>解决方案很简单，设置一下环境变量 <code>PYTHONHOME</code> ，将其指向正确的Python目录即可。我这里就把它设置为了 Anaconda 的 OpenAI-Gym environment 的目录（ <code>/Users/USERNAME/.pyenv/versions/anaconda3-2020.02/envs/OpenAI-Gym</code> ）。然后，终于输出了正确的结果啦！</p>
+<p>碎碎念，这一下就折腾了三个多小时，最后半个小时是在敲这个事件记录。</p>
+<blockquote>
+<p>References:<br><a href="https://docs.python.org/3/extending/embedding.html#compiling-and-linking-under-unix-like-systems" target="_blank" rel="noopener">1. Embedding Python in Another Application — Python 3.8.5 documentation</a></p>
+</blockquote>
 
     </article>
     <!-- license  -->
@@ -407,17 +430,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/01/09/interpretation-of-conditional-probablity/" title= "interpretation_of_conditional_probablity">
-                    <div class="nextTitle">interpretation_of_conditional_probablity</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/02/10/minimal-edit-distance/" title= "最短编辑距离 minimal edit distance">
-                    <div class="prevTitle">最短编辑距离 minimal edit distance</div>
+                <a href= "/2020/05/09/reading-notes-homemade-compiler/" title= "读书笔记 - 自制编译器">
+                    <div class="prevTitle">读书笔记 - 自制编译器</div>
                 </a>
             
         </li>
@@ -434,8 +452,8 @@ height:50vh;
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
         
         var disqus_config = function () {
-        this.page.url = "https://github.com/KasumigaokaUtaha/KasumigaokaUtaha.github.io/2019/03/14/python-socket-programming/";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "python socket programming"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = "https://github.com/KasumigaokaUtaha/KasumigaokaUtaha.github.io/2020/08/22/embed-python-into-cpp/";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "尝试在C++项目中嵌入Python脚本"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
         
         (function () { // DON'T EDIT BELOW THIS LINE
@@ -548,7 +566,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是socket"><span class="toc-number">1.</span> <span class="toc-text">什么是socket</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#尝试在C-项目中嵌入Python脚本"><span class="toc-number">1.</span> <span class="toc-text">尝试在C++项目中嵌入Python脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-World"><span class="toc-number">1.1.</span> <span class="toc-text">Hello World</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题"><span class="toc-number">1.1.1.</span> <span class="toc-text">遇到的问题</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
